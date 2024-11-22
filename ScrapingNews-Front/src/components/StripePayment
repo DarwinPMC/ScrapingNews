@@ -1,0 +1,29 @@
+import React from 'react';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+import CheckoutForm from './CheckoutForm'; // Ajusta la ruta si es necesario
+
+const stripePromise = loadStripe('pk_test_51QNPDaKXiiCkhOch3Zedzh0kLolsbS2MncSw5VYLppdipl0cy9rFSxKdUkek9WS3elWf4oiC5XbngxaUsrXMbb5k00TcIeGHpl');
+
+const StripePayment = ({ selectedPlan, closePaymentModal }) => {
+    return (
+        <div className="bg-white p-6 rounded shadow-lg w-96">
+            <h2 className="text-lg font-bold mb-4 text-center">Completa tu compra</h2>
+            {selectedPlan && (
+                <>
+                    <p className="text-gray-700 mb-2">
+                        <strong>Plan seleccionado:</strong> {selectedPlan.nombre}
+                    </p>
+                    <p className="text-gray-700 mb-4">
+                        <strong>Precio:</strong> {selectedPlan.precio}
+                    </p>
+                </>
+            )}
+            <Elements stripe={stripePromise}>
+                <CheckoutForm selectedPlan={selectedPlan} closePaymentModal={closePaymentModal} />
+            </Elements>
+        </div>
+    );
+};
+
+export default StripePayment;
