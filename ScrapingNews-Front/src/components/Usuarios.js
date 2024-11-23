@@ -184,6 +184,8 @@ const Usuarios = () => {
                             <option value="1">Rol 1</option>
                             <option value="2">Rol 2</option>
                             <option value="3">Rol 3</option>
+                            <option value="4">Rol 4</option>
+                            <option value="5">Rol 5</option>
                         </select>
                         <div className="flex justify-end">
                             <button
